@@ -1,0 +1,31 @@
+.header-container {
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header-title {
+    padding-left: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ea580c; /* Equivalent to Tailwind's text-orange-600 */
+  }
+  
+  .header-icons {
+    padding-right: 1rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .logout-button {
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    color: #dc2626; /* Equivalent to Tailwind's text-red-600 */
+  }
+  

@@ -1,0 +1,13 @@
+.home {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 20px;
+  }
+  

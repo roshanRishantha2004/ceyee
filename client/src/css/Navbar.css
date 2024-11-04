@@ -1,0 +1,78 @@
+/* Navbar.css */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem; /* Reduced padding for compactness */
+    background-color: #df362d; /* Solid blue background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: #ffffff; /* White text for the brand */
+    font-size: 1.5rem; /* Slightly smaller font size */
+    text-transform: uppercase;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem; /* Spacing between items */
+  }
+  
+  .navbar-menu li a {
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .navbar-menu li a:hover {
+    color: #ffd700; /* Gold color on hover */
+  }
+  
+  .navbar-toggler {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none; /* Hide menu in mobile view */
+    }
+  
+    .navbar-toggler {
+      display: block; /* Show toggle button */
+    }
+  
+    .navbar-menu.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px; /* Position below the navbar */
+      right: 0;
+      background-color: #ff4500; /* Match navbar background */
+      width: 100%; /* Full width */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    .navbar-menu li {
+      text-align: center; /* Center align items */
+      padding: 0.5rem 0; /* Padding for clickable area */
+    }
+  }
+  

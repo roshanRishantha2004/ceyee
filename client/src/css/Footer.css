@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-lg equivalent */
+    background-color: #1a202c; /* Tailwind's bg-gray-900 */
+    height: 2.5rem; /* 10 units in Tailwind (h-10) */
+    justify-content: space-evenly;
+  }
+  
+  .footer-title {
+    color: #ffffff; /* Tailwind's text-white */
+  }
+  
