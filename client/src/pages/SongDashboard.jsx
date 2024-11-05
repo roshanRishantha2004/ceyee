@@ -11,12 +11,13 @@ const SongDashboard = () => {
   const [currentRecord, setCurrentRecord] = useState(null);
   const [file, setFile] = useState(null);
   const [audioFile, setAudioFile] = useState(null);
+  const endPont = 'https://ceyee-backend2.vercel.app'
 
   // Fetch songs data
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/songs');
+        const response = await fetch(`${endPont}/api/v1/songs`);
         const data = await response.json();
         setSongs(data.data.response);
       } catch (err) {
@@ -31,7 +32,7 @@ const SongDashboard = () => {
   useEffect(() => {
     const getArtists = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/artists');
+        const response = await fetch(`${endPont}/api/v1/artists`);
         const data = await response.json();
         console.log(data.data)
         // Ensure the response contains artists data
@@ -141,7 +142,7 @@ const SongDashboard = () => {
       if (audioFile) formData.append('path', audioFile);
 
       if (currentRecord) {
-        const response = await axios.put(`http://localhost:8000/api/v1/songs/${currentRecord._id}`, formData, {
+        const response = await axios.put(`${endPont}/api/v1/songs/${currentRecord._id}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         if (response.status === 200) {
@@ -153,7 +154,7 @@ const SongDashboard = () => {
           message.error('Failed to update song');
         }
       } else {
-        const response = await axios.post('http://localhost:8000/api/v1/songs', formData, {
+        const response = await axios.post(`${endPont}/api/v1/songs`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         if (response.status === 201) {
@@ -182,7 +183,7 @@ const SongDashboard = () => {
       okType: 'danger',
       onOk: async () => {
         try {
-          const response = await axios.delete(`http://localhost:8000/api/v1/songs/delete/${record._id}`);
+          const response = await axios.delete(`${endPont}/api/v1/songs/delete/${record._id}`);
           if (response.status === 200 || response.status === 204) {
             setSongs((prev) => prev.filter((item) => item._id !== record._id));
             message.success('Song deleted successfully');

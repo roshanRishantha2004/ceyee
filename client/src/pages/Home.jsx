@@ -8,11 +8,12 @@ import '../css/Home.css';
 
 export const Home = () => {
   const [value, setValue] = useState([]);
+  const endPont = 'https://ceyee-backend2.vercel.app'
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/songs');
+        const response = await fetch(`${endPont}/api/v1/songs`);
         const data = await response.json();
         setValue(data.data.response); 
       } catch (err) {

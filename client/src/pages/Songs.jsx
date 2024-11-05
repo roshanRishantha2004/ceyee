@@ -10,6 +10,7 @@ const Songs = () => {
   const [comments, setComments] = useState([]);
   const location = useLocation();
   const [listenCount, setListenCount] = useState(0);
+  const endPont = 'https://ceyee-backend2.vercel.app';
 
   const { id, coverImage, songName, artistName, description, songPath } = location.state;
 
@@ -23,7 +24,7 @@ const Songs = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/comments?q=${id}`);
+        const response = await axios.get(`${endPont}/api/v1/comments?q=${id}`);
        const fetchedComments = response.data.data.map(comment => ({ user: 'User', text: comment.comment }));
         setComments(fetchedComments);
       } catch (error) {
@@ -46,7 +47,7 @@ const Songs = () => {
     e.preventDefault();
     if (comment.trim()) {
       try {
-        await axios.post('http://localhost:8000/api/v1/comments', {
+        await axios.post(`${endPont}/api/v1/comments`, {
           comment,
           song: id,
         });

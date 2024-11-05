@@ -10,11 +10,11 @@ const ArtistDashboard = () => {
   const [currentRecord, setCurrentRecord] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [file, setFile] = useState(null);
-
+  const endPont = 'https://ceyee-backend2.vercel.app'
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/artists');
+        const response = await fetch(`${endPont}/api/v1/artists`);
         const data = await response.json();
         console.log('Fetched data:', data.data);
         setValue(data.data);
@@ -97,7 +97,7 @@ const ArtistDashboard = () => {
       if (file) formData.append('file', file);
 
       if (currentRecord) {
-        const response = await axios.put(`http://localhost:8000/api/v1/artists/edit/${currentRecord._id}`, formData, {
+        const response = await axios.put(`${endPont}/api/v1/artists/edit/${currentRecord._id}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         if (response.status === 200) {
@@ -110,7 +110,7 @@ const ArtistDashboard = () => {
         }
       } else {
 
-        const response = await axios.post('http://localhost:8000/api/v1/artists', formData, {
+        const response = await axios.post(`${endPont}/api/v1/artists`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         if (response.status === 201) {
@@ -138,7 +138,7 @@ const ArtistDashboard = () => {
       okType: 'danger',
       onOk: async () => {
         try {
-          const response = await axios.delete(`http://localhost:8000/api/v1/artists/delete/${record._id}`);
+          const response = await axios.delete(`${endPont}/api/v1/artists/delete/${record._id}`);
           if (response.status === 200 || response.status === 204) {
             setValue((prev) => prev.filter((item) => item._id !== record._id));
             message.success('Project deleted successfully');
