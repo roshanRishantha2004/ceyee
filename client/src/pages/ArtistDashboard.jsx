@@ -59,10 +59,19 @@ const ArtistDashboard = () => {
 
   const showModal = (record = null) => {
     setIsModalVisible(true);
-    form.resetFields();
     setCurrentRecord(record);
     setImageUrl(record?.imgUrl || '');
     setFile(null);
+
+    // Populate form fields with the current record's data
+    if (record) {
+      form.setFieldsValue({
+        name: record.name,
+        description: record.description,
+      });
+    } else {
+      form.resetFields(); // Reset the form for a new entry
+    }
   };
 
   const handleCancel = () => {
@@ -88,7 +97,6 @@ const ArtistDashboard = () => {
       if (file) formData.append('file', file);
 
       if (currentRecord) {
-        // Edit request (PUT)
         const response = await axios.put(`http://localhost:8000/api/v1/artists/edit/${currentRecord._id}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
@@ -101,7 +109,7 @@ const ArtistDashboard = () => {
           message.error('Failed to update project');
         }
       } else {
-        // Add request (POST)
+
         const response = await axios.post('http://localhost:8000/api/v1/artists', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
@@ -151,10 +159,10 @@ const ArtistDashboard = () => {
         <div className="flex justify-between">
           <h1 className="text-center text-2xl font-bold">Artists</h1>
           <Button className="bg-orange-700 rounded-lg px-2" onClick={() => showModal()}>
-            Add Project
+            Add Artist
           </Button>
           <Modal
-            title={currentRecord ? "Edit Project" : "Add Project"}
+            title={currentRecord ? "Edit Artist" : "Add Artist"}
             visible={isModalVisible}
             onCancel={handleCancel}
             footer={null}
@@ -163,21 +171,16 @@ const ArtistDashboard = () => {
               <Form.Item
                 label="Name"
                 name="name"
-                rules={[{ required: true, message: 'Please input the name!' }]}
-              >
+                rules={[{ required: true, message: 'Please input the name!' }]}>
                 <Input />
               </Form.Item>
               <Form.Item
                 label="Description"
                 name="description"
-                rules={[{ required: true, message: 'Please input the description!' }]}
-              >
+                rules={[{ required: true, message: 'Please input the description!' }]}>
                 <Input.TextArea rows={4} />
               </Form.Item>
-              <Form.Item
-                label="Image File"
-                name="file"
-              >
+              <Form.Item label="Image File" name="file">
                 <Upload
                   listType="picture"
                   beforeUpload={() => false}
@@ -186,6 +189,11 @@ const ArtistDashboard = () => {
                 >
                   <Button>Upload Image</Button>
                 </Upload>
+                {imageUrl && (
+                  <div style={{ marginTop: 10 }}>
+                    <img src={imageUrl} alt="Current" style={{ width: 100, height: 100 }} />
+                  </div>
+                )}
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" loading={isSubmitting}>

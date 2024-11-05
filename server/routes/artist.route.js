@@ -9,7 +9,7 @@ artistRouter.get('/', artistController.getAllArtists);
 
 artistRouter.get('/:id', artistController.getArtistById);
 
-artistRouter.put('/edit/:id', artistController.updateArtist);
+artistRouter.put('/edit/:id', upload.single('file'), artistController.updateArtist);
 
 artistRouter.delete('/delete/:id', artistController.deleteArtist);
 

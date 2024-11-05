@@ -11,7 +11,11 @@ app.use(express.json({limit: '10mb'}));
 //app.use('/uploads', express.static('uploads'));
 
 const artistRouter = require('./routes/artist.route');
+const songRouter = require('./routes/song.route');
+const commentRouter = require('./routes/comment.route');
 
 app.use('/api/v1/artists', artistRouter);
+app.use('/api/v1/songs', songRouter);
+app.use('/api/v1/comments', commentRouter)
 
 app.listen(8000, () => console.log('Server is listening on port 8000!'));

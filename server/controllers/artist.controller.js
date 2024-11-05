@@ -66,18 +66,35 @@ exports.updateArtist = async (req, res) => {
     try {
         const id = req.params.id;
 
-        if (!mongoose.isValidObjectId(id))
-            return res.status(400).json({ success: false, message:'Invalid object id' });
-        
-        const response = await Artist.findByIdAndUpdate(id, req.body, { new: true });
-
-        if (response.length === 0) {
-            return res.status(404).json({ success: false, message: 'No artists found!' });
+        if (!mongoose.isValidObjectId(id)) {
+            return res.status(400).json({ success: false, message: 'Invalid object id' });
         }
 
-        res.status(200).json({ success: true, message: 'Artist updated!', data: { response } });
+        console.log(req.file.path)
+       
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                folder: 'images',
+            });
 
+        const updateData = {
+            name: req.body.name,
+            description: req.body.description,
+            imgUrl: result.secure_url
+        };
+
+
+        console.log(updateData)
+
+        const response = await Artist.findByIdAndUpdate(id, updateData, { new: true });
+
+        if (!response) {
+            return res.status(404).json({ success: false, message: 'Artist not found!' });
+        }
+
+        res.status(200).json({ success: true, message: 'Artist updated successfully!', data: response });
+        
     } catch (err) {
+        console.error(err);
         res.status(500).json({ success: false, message: `Server error: ${err.message}` });
     }
 }
@@ -89,13 +106,16 @@ exports.deleteArtist = async (req, res) => {
         if (!mongoose.isValidObjectId(id))
             return res.status(400).json({ success: false, message:'Invalid object id' });
         
+        const result = await Artist.findById(id);
+        await cloudinary.uploader.destroy(result.imgUrl);
         const response = await Artist.findByIdAndDelete(id);
+        //console.log(result.imgUrl)
 
         if (response.length === 0) {
             return res.status(404).json({ success: false, message: 'No artists found!' });
         }
 
-        res.status(200).json({ success: true, message: 'Artist deleted!', data: response });
+        res.status(200).json({ success: true, message: 'Artist deleted!', data: null });
 
     } catch (err) {
         res.status(500).json({ success: false, message: `Server error: ${err.message}` });

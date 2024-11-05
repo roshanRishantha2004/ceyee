@@ -15,7 +15,7 @@ const Dashboard = () => {
           <PageContent />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

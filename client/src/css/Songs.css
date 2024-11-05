@@ -1,126 +1,181 @@
 /* General styling for full-width, responsive layout */
 .artist-profile {
-    background-color: white;
-    color: black;
-    padding: 20px;
-    width: 100%; /* Full width */
-    box-sizing: border-box;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  width: 100%; /* Full width */
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.cover-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: cover;
+}
+
+.profile-info {
+  position: relative;
+  margin-top: 50px;
+  z-index: 1;
+}
+
+.verified-badge {
+  display: inline-block;
+  font-size: 14px;
+  color: #1db954;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.artist-name {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.monthly-listeners {
+  font-size: 16px;
+  color: #555;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures buttons stack on smaller screens */
+  margin-top: 30px;
+}
+
+.audio-player {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.play-button {
+  background-color: #1db954;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.follow-button,
+.more-options {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* Song Info */
+.song-info {
+  margin-top: 30px;
+}
+
+.song-info h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Comment Section Styling */
+.comment-section {
+  margin-top: 30px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.comment-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.comment {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment-form {
+  display: flex;
+  margin-top: 10px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+}
+
+.comment-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1db954;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .artist-name {
+    font-size: 32px;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-header {
     text-align: center;
   }
-  
-  .profile-header {
-    margin-bottom: 20px;
-  }
-  
-  .verified-badge {
-    display: inline-block;
-    font-size: 14px;
-    color: #1db954;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .artist-name {
-    font-size: 48px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .monthly-listeners {
-    font-size: 16px;
-    color: #555;
-  }
-  
+
   .profile-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Ensures buttons stack on smaller screens */
-    margin-bottom: 20px;
+    flex-direction: column;
   }
-  
-  .play-button {
-    background-color: #1db954;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
+
+  .play-button,
   .follow-button,
   .more-options {
-    background-color: transparent;
-    border: 1px solid #ccc;
-    color: #333;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 50px;
-    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 16px;
   }
-  
-  /* Comment Section Styling */
-  .comment-section {
-    margin-top: 30px;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .comment-section h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .comment {
-    background-color: #f7f7f7;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .comment p {
-    margin: 0;
-  }
-  
-  .comment-form {
-    display: flex;
-    margin-top: 10px;
-  }
-  
+
   .comment-form input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px 0 0 8px;
+    font-size: 14px;
   }
-  
-  .comment-form button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #1db954;
-    color: white;
-    font-weight: bold;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .artist-name {
-      font-size: 32px;
-    }
-    
-    .play-button, .follow-button, .more-options {
-      font-size: 14px;
-      padding: 8px 16px;
-    }
-  
-    .profile-header, .comment-section {
-      padding: 0 20px;
-    }
-  }
-  
+}

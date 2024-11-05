@@ -3,8 +3,8 @@ import './App.css';
 import { Home } from './pages/Home';
 import Songs from './pages/Songs';
 import Dashboard from './pages/Dasboard';
-import Song from './pages/Song'
 import ArtistDashboard from './pages/ArtistDashboard';
+import SongDashboard from './pages/SongDashboard';
 function App() {
   return (
     <>
@@ -12,7 +12,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/songs' element={<Songs />} />
         <Route path='/dashboard' element={<Dashboard />} >
-          <Route path='song' element={<Song />} />
+          <Route path='song' element={<SongDashboard />} />
           <Route path='artist' element={<ArtistDashboard />} />
         </Route>
       </Routes>
