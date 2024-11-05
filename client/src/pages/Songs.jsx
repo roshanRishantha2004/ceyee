@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SongCard from '../componets/SongCard';
+
 import '../css/Songs.css';
 import Navbar from '../componets/Navbar';
 import { useLocation } from 'react-router-dom';

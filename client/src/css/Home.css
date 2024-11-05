@@ -1,100 +1,166 @@
-/* Home.css */
-.home {
-  padding: 30px;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
+/* General Layout */
+.home-page {
+  font-family: 'Arial', sans-serif;
   color: #333;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
-.song-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 30px;
-  justify-items: center;
-  margin-top: 20px;
-}
-
-.no-songs {
-  font-size: 1.2rem;
-  color: #777;
-}
-
-/* Hero.css */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-  background-image: url('../images/cover.jpg');
+/* Hero Banner Section */
+.hero-banner {
+  background: url('../images/cover.jpg') no-repeat center center;
   background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
   color: white;
-  max-width: 600px;
-  padding: 1rem;
+  text-align: center;
+  padding: 120px 20px;
 }
 
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
-  color: #00aaff;
+.hero-banner h1 {
+  font-size: 3.5em;
+  margin: 0;
 }
 
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  line-height: 1.5;
+.hero-banner p {
+  font-size: 1.8em;
+  margin: 20px 0;
 }
 
-.hero-button {
-  padding: 0.75rem 1.75rem;
-  font-size: 1.1rem;
-  color: #007bff;
-  background-color: white;
+.cta-button {
+  background-color: #1db954;
+  color: white;
   border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
-.hero-button:hover {
-  background-color: #007bff;
+.cta-button:hover {
+  background-color: #1aa34a;
+}
+
+/* Featured Music Section */
+.featured-music {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.featured-music h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.music-items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.music-item {
+  width: 280px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.music-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.music-item h3 {
+  font-size: 1.4em;
+}
+
+.music-item p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+/* New Releases Section */
+.new-releases {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.new-releases h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+/* Featured Artists Section */
+.featured-artists {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.featured-artists h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.artists {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.artist-card {
+  width: 200px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.artist-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.artist-card h3 {
+  font-size: 1.4em;
+}
+
+.artist-card p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+/* Call to Action Section */
+.call-to-action {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #1db954;
   color: white;
-  transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
+.call-to-action h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
 
-  .hero p {
-    font-size: 1rem;
-  }
+.call-to-action p {
+  font-size: 1.3em;
+  margin-bottom: 40px;
+}
 
-  .hero-button {
-    padding: 0.5rem 1.2rem;
-  }
+.cta-button {
+  background-color: #121212;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #333;
 }

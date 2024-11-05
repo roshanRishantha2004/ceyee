@@ -6,42 +6,42 @@
   body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4; /* Light background */
+    background-color: #f4f4f4; 
   }
   
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem; /* Reduced padding for compactness */
-    background-color: #df362d; /* Solid blue background */
+    padding: 0.5rem 1rem; 
+    background-color: #1db954; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .navbar-brand {
-    color: #ffffff; /* White text for the brand */
-    font-size: 1.5rem; /* Slightly smaller font size */
+    color: #ffffff;
+    font-size: 1.5rem; 
     text-transform: uppercase;
   }
   
   .navbar-menu {
     list-style: none;
     display: flex;
-    gap: 1rem; /* Spacing between items */
+    gap: 1rem; 
   }
   
   .navbar-menu li a {
-    color: #ffffff; /* White text */
+    color: #ffffff; 
     text-decoration: none;
-    transition: color 0.3s; /* Smooth color transition */
+    transition: color 0.3s;
   }
   
   .navbar-menu li a:hover {
-    color: #ffd700; /* Gold color on hover */
+    color: #ffd700; 
   }
   
   .navbar-toggler {
-    display: none; /* Hidden by default */
+    display: none;
     background: none;
     border: none;
     color: #ffffff;
@@ -52,27 +52,27 @@
   /* Responsive styles */
   @media (max-width: 768px) {
     .navbar-menu {
-      display: none; /* Hide menu in mobile view */
+      display: none;
     }
   
     .navbar-toggler {
-      display: block; /* Show toggle button */
+      display: block; 
     }
   
     .navbar-menu.open {
       display: flex;
       flex-direction: column;
       position: absolute;
-      top: 60px; /* Position below the navbar */
+      top: 60px; 
       right: 0;
-      background-color: #ff4500; /* Match navbar background */
-      width: 100%; /* Full width */
+      background-color: #ff4500; 
+      width: 100%;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
   
     .navbar-menu li {
-      text-align: center; /* Center align items */
-      padding: 0.5rem 0; /* Padding for clickable area */
+      text-align: center;
+      padding: 0.5rem 0; 
     }
   }
   

@@ -1,13 +1,11 @@
-// Home.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../componets/Navbar';
-import Hero from '../componets/Hero';
-import SongCard from '../componets/SongCard';
-import Footer from '../componets/Footer.jsx';
 import '../css/Home.css';
-
-export const Home = () => {
+import { useNavigate } from 'react-router-dom';
+const HomePage = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState([]);
+  const [artist, setArtist] = useState([]);
   const endPont = 'https://ceyee-backend2.vercel.app'
 
   useEffect(() => {
@@ -24,35 +22,104 @@ export const Home = () => {
     getData();
   }, []);
 
+  
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(`${endPont}/api/v1/artists`);
+        const data = await response.json();
+        console.log(data.data)
+        setArtist(data.data); 
+      } catch (err) {
+        console.error('Failed to fetch data:', err);
+      }
+    };
+
+    getData();
+  }, []);
   return (
-    <>
+    <div className="home-page">
       <Navbar />
-      <Hero />
-      <div className="home">
-        <div className="update-banner">
-          <p>🎉 Check out our latest updates and new features!</p>
+      {/* Hero Banner */}
+      <section className="hero-banner">
+        <div className="hero-content">
+          <h1>Welcome to Ceyee</h1>
+          <p>Your ultimate music destination</p>
+          <button className="cta-button">Explore Music</button>
         </div>
-        <h1 className="section-title">Popular Songs</h1>
-        <div className="song-list">
+      </section>
+
+      {/* Featured Music Section */}
+      <section className="featured-music">
+        <h2>Featured Albums & Playlists</h2>
+        
+ <div className="music-items">
           {value.length > 0 ? (
             value.map((song, index) => (
-              <SongCard
-                key={index}
-                id={song._id}
-                coverImage={song.img || 'default-image-url.jpg'}
-                artistName={song.artist?.name || 'Unknown Artist'}
-                artistImage={song.artist?.imgUrl || 'default-artist-image.jpg'}
-                songName={song.songPath}
-                description={song.description}
-                songPath={song.path}
-              />
+             
+          <div className="music-item">
+            <img
+              src={song.img}
+              alt="Album 1"
+              className="music-image"
+            />
+            <h3>{song.name}</h3>
+            <p>{song.description}</p>
+            <button
+          className="listen-button" onClick={() => navigate('/songs', {
+            state: {
+              id: song._id,
+              coverImage: song.img,
+              songName: song.name,
+              artistName: song.name,
+              description: song.description,
+              songPath: song.path
+            }
+          })}>
+          Listen
+        </button>
+          </div>
+          
             ))
           ) : (
             <p className="no-songs">No songs available</p>
           )}
+
         </div>
-      </div>
-      <Footer />
-    </>
+      </section>
+
+      {/* Featured Artists Section */}
+      <section className="featured-artists">
+        <h2>Featured Artists</h2>
+        <div className="artists">
+           {artist.length > 0 ? (
+            artist.map((artist, index) => (
+             <div>
+              <img
+              src={artist.imgUrl}
+              alt="Artist 1"
+              className="artist-image"
+            />
+            <h3>{artist.name}</h3>
+            <p>{artist.description}</p>
+          </div>
+          
+            ))
+          ) : (
+            <p className="no-songs">No songs available</p>
+          )}
+
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="call-to-action">
+        <h2>Join Ceyee Today</h2>
+        <p>Start streaming your favorite music, discover new hits, and enjoy an amazing audio experience.</p>
+        <button className="cta-button">Sign Up</button>
+      </section>
+    </div>
   );
 };
+
+export default HomePage;
